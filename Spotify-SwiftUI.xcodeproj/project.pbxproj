@@ -11,6 +11,8 @@
 		1227FFD22BEFBACD00366683 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227FFD12BEFBACD00366683 /* ContentView.swift */; };
 		1227FFD42BEFBACE00366683 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1227FFD32BEFBACE00366683 /* Assets.xcassets */; };
 		1227FFD72BEFBACE00366683 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1227FFD62BEFBACE00366683 /* Preview Assets.xcassets */; };
+		1227FFDF2BEFBB6D00366683 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1227FFDE2BEFBB6D00366683 /* SDWebImageSwiftUI */; };
+		1227FFE42BEFBBF600366683 /* ImageLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227FFE32BEFBBF600366683 /* ImageLoaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,7 @@
 		1227FFD12BEFBACD00366683 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1227FFD32BEFBACE00366683 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1227FFD62BEFBACE00366683 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1227FFE32BEFBBF600366683 /* ImageLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1227FFDF2BEFBB6D00366683 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +55,7 @@
 		1227FFCE2BEFBACD00366683 /* Spotify-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				1227FFE02BEFBBAA00366683 /* Shared */,
 				1227FFCF2BEFBACD00366683 /* Spotify_SwiftUIApp.swift */,
 				1227FFD12BEFBACD00366683 /* ContentView.swift */,
 				1227FFD32BEFBACE00366683 /* Assets.xcassets */,
@@ -65,6 +70,14 @@
 				1227FFD62BEFBACE00366683 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1227FFE02BEFBBAA00366683 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				1227FFE32BEFBBF600366683 /* ImageLoaderView.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +96,9 @@
 			dependencies = (
 			);
 			name = "Spotify-SwiftUI";
+			packageProductDependencies = (
+				1227FFDE2BEFBB6D00366683 /* SDWebImageSwiftUI */,
+			);
 			productName = "Spotify-SwiftUI";
 			productReference = 1227FFCC2BEFBACD00366683 /* Spotify-SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +127,9 @@
 				Base,
 			);
 			mainGroup = 1227FFC32BEFBACD00366683;
+			packageReferences = (
+				1227FFDD2BEFBB6D00366683 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+			);
 			productRefGroup = 1227FFCD2BEFBACD00366683 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1227FFE42BEFBBF600366683 /* ImageLoaderView.swift in Sources */,
 				1227FFD22BEFBACD00366683 /* ContentView.swift in Sources */,
 				1227FFD02BEFBACD00366683 /* Spotify_SwiftUIApp.swift in Sources */,
 			);
@@ -344,6 +364,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1227FFDD2BEFBB6D00366683 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1227FFDE2BEFBB6D00366683 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1227FFDD2BEFBB6D00366683 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1227FFC42BEFBACD00366683 /* Project object */;
 }
