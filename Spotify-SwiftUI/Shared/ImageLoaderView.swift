@@ -10,13 +10,27 @@ import SDWebImageSwiftUI
 
 struct ImageLoaderView: View {
     
-    var urlString = "https://picsum.photos/600/600"
+    var urlString = "https://picsum.photos/500/600"
+    var resizingMode: ContentMode = .fill
     
     var body: some View {
-       WebImage(url: URL(string: urlString))
+        Rectangle()
+            .opacity(0.001)
+            .overlay(
+                WebImage(url: URL(string: urlString))
+                    .resizable()
+                    .indicator(.activity)
+                    .aspectRatio(contentMode: resizingMode)
+                // Resmin tıklanmasını kontrol etme
+                    .allowsTightening(false)
+            )
+            .clipped()
     }
 }
 
 #Preview {
     ImageLoaderView()
+        .cornerRadius(30)
+        .padding(30)
+        .padding(.vertical, 40)
 }

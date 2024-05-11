@@ -13,6 +13,7 @@
 		1227FFD72BEFBACE00366683 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1227FFD62BEFBACE00366683 /* Preview Assets.xcassets */; };
 		1227FFDF2BEFBB6D00366683 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1227FFDE2BEFBB6D00366683 /* SDWebImageSwiftUI */; };
 		1227FFE42BEFBBF600366683 /* ImageLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227FFE32BEFBBF600366683 /* ImageLoaderView.swift */; };
+		1227FFE62BEFC14800366683 /* DatabaseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227FFE52BEFC14800366683 /* DatabaseHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		1227FFD32BEFBACE00366683 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1227FFD62BEFBACE00366683 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1227FFE32BEFBBF600366683 /* ImageLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderView.swift; sourceTree = "<group>"; };
+		1227FFE52BEFC14800366683 /* DatabaseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				1227FFE32BEFBBF600366683 /* ImageLoaderView.swift */,
+				1227FFE52BEFC14800366683 /* DatabaseHelper.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -156,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1227FFE62BEFC14800366683 /* DatabaseHelper.swift in Sources */,
 				1227FFE42BEFBBF600366683 /* ImageLoaderView.swift in Sources */,
 				1227FFD22BEFBACD00366683 /* ContentView.swift in Sources */,
 				1227FFD02BEFBACD00366683 /* Spotify_SwiftUIApp.swift in Sources */,
