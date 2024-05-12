@@ -12,6 +12,7 @@ struct SpotifyHomeView: View {
     
     @State private var currentUser: User? = nil
     @State private var products: [Product] = []
+    @State private var productRows: [ProductRow] = []
     @State private var selectedCategory: Category? = nil
     
     var body: some View {
@@ -26,9 +27,29 @@ struct SpotifyHomeView: View {
                             if let product = products.first {
                                 newReleaseSection(product: product)
                             }
-                            
-                            ImageTitleRowCell()
-                            
+                            ForEach(productRows) { row in
+                                VStack(spacing: 8) {
+                                    Text(row.title)
+                                        .font(.title)
+                                        .fontWeight(.semibold)
+                                        .foregroundStyle(.spotifyWhite)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    
+                                    ScrollView(.horizontal) {
+                                        HStack(alignment: .top,spacing: 16) {
+                                            ForEach(row.products) { product in
+                                                
+                                                ImageTitleRowCell(imageSize: 120,
+                                                                  imageName: product.firstImage,
+                                                                  title: product.title
+                                                )
+                                            }
+                                        }
+                                        .padding(.horizontal, 16)
+                                    }
+                                    .scrollIndicators(.hidden)
+                                }
+                            }
                         }
                         .padding(.horizontal, 8)
                     } header: {
@@ -50,6 +71,16 @@ struct SpotifyHomeView: View {
         do {
             currentUser = try await DatabaseHelper().getUsers().first
             products = try await Array(DatabaseHelper().getProducts().prefix(8))
+            
+            var rows: [ProductRow] = []
+            let allBrands = Set(products.map { $0.brand })
+            
+            for brand in allBrands {
+                rows.append(ProductRow(title: brand.capitalized, products: products))
+            }
+            
+            productRows = rows
+            
         } catch {
             print("Veri alınırken bir hata oluştu: \(error.localizedDescription)")
             
@@ -99,6 +130,9 @@ struct SpotifyHomeView: View {
                     imageName: product.firstImage,
                     title: product.title
                 )
+                .asButton(.press) {
+                   // İlgili ürüne gidecek
+                }
             }
         })
     }

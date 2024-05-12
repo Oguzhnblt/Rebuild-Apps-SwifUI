@@ -24,7 +24,6 @@ struct ImageTitleRowCell: View {
                         .foregroundStyle(.spotifyWhite)
                         .lineLimit(2)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
         }
     }
 
