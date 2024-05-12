@@ -22,7 +22,7 @@ struct PlaylistDescriptionCell: View {
     
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 8) {
             Text(descriptionText)
                 .font(.headline)
                 .fontWeight(.medium)
