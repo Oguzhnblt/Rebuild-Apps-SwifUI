@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlaylistDescriptionCell: View {
     
-    var descriptionText: String = mockProduct1.description
+    var descriptionText: String = ""
     var userName: String = "Oğuzhan"
     var subheadline: String = "Laptops"
     

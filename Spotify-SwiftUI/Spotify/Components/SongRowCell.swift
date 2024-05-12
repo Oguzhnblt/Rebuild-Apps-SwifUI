@@ -39,6 +39,10 @@ struct SongRowCell: View {
                     onEllipsisPressed?()
                 }
         }
+        .background(.black.opacity(0.001))
+        .onTapGesture {
+            onCellPressed?()
+        }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 8)
         .offset(y: -8)

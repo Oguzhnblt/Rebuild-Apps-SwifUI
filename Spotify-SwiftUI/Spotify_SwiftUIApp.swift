@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 @main
 struct Spotify_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            SpotifyHomeView()
+            RouterView { _ in
+                ContentView()
+            }
         }
     }
 }
