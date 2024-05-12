@@ -1,2 +1,3 @@
 Building spotify screens on SwiftUI
-![Spotify](https://github.com/Oguzhnblt/Spotify/assets/106863156/80480d97-c07b-4ac8-b9d1-d35600cba331)
+
+![Spotify](https://github.com/Oguzhnblt/Spotify/assets/106863156/8aa477e7-cb85-46c6-8a5a-216e9cbdda47)
