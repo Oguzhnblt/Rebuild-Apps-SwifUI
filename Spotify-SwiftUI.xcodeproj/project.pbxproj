@@ -30,6 +30,7 @@
 		12AACBAB2BF131670028A33A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 12AACBAA2BF131670028A33A /* SDWebImageSwiftUI */; };
 		12AAEF2B2BF1330900A70B73 /* SongRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AAEF2A2BF1330900A70B73 /* SongRowCell.swift */; };
 		12BCDDEB2BF8F9C600EEBD19 /* BumbleHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BCDDEA2BF8F9C600EEBD19 /* BumbleHomeView.swift */; };
+		12BCDDED2BF9022D00EEBD19 /* BumbleFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BCDDEC2BF9022D00EEBD19 /* BumbleFilterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		12AACBA32BF122520028A33A /* PlaylistDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDescriptionCell.swift; sourceTree = "<group>"; };
 		12AAEF2A2BF1330900A70B73 /* SongRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRowCell.swift; sourceTree = "<group>"; };
 		12BCDDEA2BF8F9C600EEBD19 /* BumbleHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BumbleHomeView.swift; sourceTree = "<group>"; };
+		12BCDDEC2BF9022D00EEBD19 /* BumbleFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BumbleFilterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,6 +183,7 @@
 		12BCDDE82BF8F99000EEBD19 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				12BCDDEC2BF9022D00EEBD19 /* BumbleFilterView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				1227FFFA2BEFDF9100366683 /* Category.swift in Sources */,
 				1227FFE82BEFC52500366683 /* Product.swift in Sources */,
 				1227FFD22BEFBACD00366683 /* ContentView.swift in Sources */,
+				12BCDDED2BF9022D00EEBD19 /* BumbleFilterView.swift in Sources */,
 				12AAEF2B2BF1330900A70B73 /* SongRowCell.swift in Sources */,
 				12AACBA42BF122520028A33A /* PlaylistDescriptionCell.swift in Sources */,
 				1227FFD02BEFBACD00366683 /* Spotify_SwiftUIApp.swift in Sources */,
