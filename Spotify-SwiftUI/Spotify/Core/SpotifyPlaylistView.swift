@@ -11,7 +11,7 @@ import SwiftfulRouting
 
 struct SpotifyPlaylistView: View {
     var product: Product?
-    var user : User?
+    var user: User?
     
     @Environment(\.router) var router
     @State private var products: [Product] = []
