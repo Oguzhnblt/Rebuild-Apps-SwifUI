@@ -19,7 +19,8 @@ struct BumbleHomeView: View {
             VStack(spacing: 12) {
                 header
                 BumbleFilterView(options: options, selection: $selection)
-                 
+                BumbleCardView()
+                
                 Spacer()
             }
             .padding(8)

@@ -16,9 +16,69 @@ struct User: Codable, Identifiable {
     let id: Int
     let firstName, lastName: String
     let age: Int
+    let height: Double
     let email, phone, username, password: String
     let image: String
-    let height: Int
-    let weight: Double
+    let work: String
+    let education: String
+    let aboutMe: String
+    let location: String
+    
+    var basics: [UserInterest] {
+        [UserInterest(iconName: "ruler", emoji: nil, text: "\(height)"),
+         UserInterest (iconName: "graduationcap", emoji: nil, text: education),
+         UserInterest (iconName: "wineglass", emoji: nil, text: "Socially"),
+         UserInterest (iconName: "moon.stars.fill", emoji: nil, text: "Virgo")
+        ]
+    }
+    
+    var images: [String] {
+        [
+            "https://picsum.photos/1920/1080", "https://picsum.photos/2160/1080", "https://picsum.photos/1600/1600"
+        ]
+    }
+    
+    var interests: [UserInterest] {
+        [
+            UserInterest(
+                iconName: nil,
+                emoji: "🏃🏻‍♂️‍➡️",
+                text: "Running"
+            ),
+            UserInterest (
+                iconName: nil,
+                emoji: "🏋🏻‍♀️",
+                text: "Gym"
+            ),
+            UserInterest (
+                iconName: nil,
+                emoji: "🎧",
+                text: "Music"
+            ),
+            UserInterest (
+                iconName: nil,
+                emoji: "🍪",
+                text: "Cooking"
+            )
+        ]
+    }
+    
+    
+    static let user = User(
+        id: 1,
+        firstName: "John",
+        lastName: "Doe",
+        age: 30,
+        height: 1.87,
+        email: "john.doe@example.com",
+        phone: "1234567890",
+        username: "johndoe123",
+        password: "password123",
+        image: "https://picsum.photos/600/600",
+        work: "Worker as Some Job",
+        education: "Graduate Degree",
+        aboutMe: "This is a sentence about me that will look good on my profile!",
+        location: "New York, NY"
+    )
 }
 
