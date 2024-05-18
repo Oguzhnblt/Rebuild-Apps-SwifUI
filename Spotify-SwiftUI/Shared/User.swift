@@ -19,10 +19,22 @@ struct User: Codable, Identifiable {
     let height: Double
     let email, phone, username, password: String
     let image: String
-    let work: String
-    let education: String
-    let aboutMe: String
-    let location: String
+    
+    var work: String {
+        "Worker as Some Job"
+    }
+    
+    var education: String {
+        "Graduate Degree"
+    }
+    
+    var aboutMe: String {
+        "This is a sentence about me that will look good on my profile!"
+    }
+    
+    var location: String {
+        "New York, NY"
+    }
     
     var basics: [UserInterest] {
         [UserInterest(iconName: "ruler", emoji: nil, text: "\(height)"),
@@ -74,11 +86,7 @@ struct User: Codable, Identifiable {
         phone: "1234567890",
         username: "johndoe123",
         password: "password123",
-        image: "https://picsum.photos/600/600",
-        work: "Worker as Some Job",
-        education: "Graduate Degree",
-        aboutMe: "This is a sentence about me that will look good on my profile!",
-        location: "New York, NY"
+        image: "https://picsum.photos/600/600"
     )
 }
 
