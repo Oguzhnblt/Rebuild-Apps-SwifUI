@@ -165,6 +165,7 @@ struct BumbleCardView: View {
             sectionTitle(title: "About Me")
             Text(user.aboutMe)
             
+            
             HStack(spacing: 0) {
                 BumbleHeartView()
                 Text("Send a Compliment")
