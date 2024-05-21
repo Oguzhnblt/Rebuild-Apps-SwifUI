@@ -10,6 +10,8 @@ import SwiftfulUI
 
 struct BumbleCardView: View {
     
+    @State private var cardFrame: CGRect = .zero
+
     var onSendAComplimentPressed: (() -> Void)? = nil
     var onXmarkPressed: (() -> Void)? = nil
     var onCheckmarkPressed: (() -> Void)? = nil
@@ -17,9 +19,6 @@ struct BumbleCardView: View {
     var onSuperLikePressed: (() -> Void)? = nil
     
     var user: User = .user
-    @State private var cardFrame: CGRect = .zero
-    
-    
     
     var body: some View {
         ScrollView(.vertical) {

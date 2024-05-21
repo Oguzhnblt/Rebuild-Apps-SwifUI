@@ -15,8 +15,9 @@ struct BumbleHomeView: View {
     
     @State private var allUsers: [User] = []
     @State private var selectedIndex: Int = 0
-    @State private var cardOffsets: [Int: Bool] = [:]
-    @State private var currentSwipeOffset: CGFloat = 0
+    
+    @State private var xOffset: CGFloat = 0
+    @State private var degrees: Double = 0
     
     var body: some View {
         ZStack {
@@ -25,7 +26,6 @@ struct BumbleHomeView: View {
             VStack(spacing: 12) {
                 header
                 BumbleFilterView(options: options, selection: $selection)
-                //                BumbleCardView()
                 
                 ZStack {
                     if !allUsers.isEmpty {
@@ -36,23 +36,14 @@ struct BumbleHomeView: View {
                             let isNext = (selectedIndex + 1) == index
                             
                             if isPrevious || isCurrent || isNext {
-                                let offsetValue = cardOffsets[user.id]
                                 userProfileCell(user: user, index: index)
-                                    .zIndex(Double(allUsers.count - index))
-                                    .offset(x: offsetValue == nil ? 0 : offsetValue == true ? 900 : -900)
                             }
                         }
                     } else {
                         ProgressView()
                     }
-                    
-                    overlaySwipingIndicators
-                        .zIndex(99999)
-                    
                 }
-                .frame(maxHeight: .infinity)
-                .animation(.smooth, value: cardOffsets)
-                
+                .frame(width: cardWith, height: cardHeight)
             }
             .padding(8)
         }
@@ -75,7 +66,6 @@ struct BumbleHomeView: View {
     
     private func userDidSelect(index: Int, isLike: Bool) {
         let user = allUsers[index]
-        cardOffsets[user.id] = isLike
         
         selectedIndex += 1
     }
@@ -93,54 +83,13 @@ struct BumbleHomeView: View {
             onSuperLikePressed: nil,
             user: user
         )
-            .withDragGesture(
-                .horizontal,
-                minimumDistance: 10,
-                resets: true,
-                animation: .default,
-                rotationMultiplier: 1.05,
-                onChanged: { dragOffset in
-                    currentSwipeOffset = dragOffset.width
-                },
-                onEnded: { dragOffset in
-                    if dragOffset.width < -50 {
-                        userDidSelect(index: index, isLike: false)
-                    } else if dragOffset.width > 50 {
-                        userDidSelect(index: index, isLike: true)
-                    }
-                }
-            )
-    }
-    
-    private var overlaySwipingIndicators: some View {
-        ZStack {
-            Circle()
-                .fill(.bumbleGray.opacity(0.4))
-                .overlay(
-                    Image(systemName: "xmark")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                )
-                .frame(width: 60, height: 60)
-                .scaleEffect(abs(currentSwipeOffset) > 100 ? 1.5 : 1.0)
-                .offset(x: min(-currentSwipeOffset, 150))
-                .offset(x: -100)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Circle()
-                .fill(.bumbleGray.opacity(0.4))
-                .overlay(
-                    Image(systemName: "checkmark")
-                        .font(.title)
-                        .fontWeight(.semibold)
-                )
-                .frame(width: 60, height: 60)
-                .scaleEffect(abs(currentSwipeOffset) > 50 ? 1.5 : 1.0)
-                .offset(x: max(-currentSwipeOffset, -150))
-                .offset(x: 100)
-                .frame(maxWidth: .infinity, alignment: .trailing)
-        }
-        .animation(.smooth, value: currentSwipeOffset)
+        .offset(x: xOffset)
+        .rotationEffect(.degrees(degrees))
+        .animation(.snappy, value: xOffset)
+        .gesture(DragGesture()
+            .onChanged(onDragChanged)
+            .onEnded(onDragEnded)
+        )
     }
     
     private var header: some View {
@@ -182,6 +131,36 @@ struct BumbleHomeView: View {
         .foregroundStyle(.bumbleBlack)
     }
     
+}
+
+private extension BumbleHomeView {
+    func onDragChanged(_ value: _ChangedGesture<DragGesture>.Value) {
+        xOffset = value.translation.width
+        degrees = Double(value.translation.width / 25)
+    }
+    
+    func onDragEnded(_ value: _ChangedGesture<DragGesture>.Value) {
+        let width = value.translation.width
+        
+        if abs(width) <= abs(screenCutoff) {
+            xOffset = 0
+            degrees = 0
+        }
+    }
+}
+
+private extension BumbleHomeView {
+    var screenCutoff: CGFloat {
+        (UIScreen.main.bounds.width / 2 ) * 0.8
+    }
+    
+    var cardWith: CGFloat {
+        UIScreen.main.bounds.width - 20
+    }
+    
+    var cardHeight: CGFloat {
+        UIScreen.main.bounds.height / 1.3
+    }
 }
 
 #Preview {
