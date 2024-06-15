@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftfulUI
 
+
 struct BumbleHomeView: View {
     
     @State private var options: [String] = ["Everyone", "Trending"]
@@ -18,14 +19,14 @@ struct BumbleHomeView: View {
     @State private var selectedIndex: Int = 0
     @State private var cardOffsets: [Int: Bool] = [:]
     @State private var currentSwipeOffset: CGFloat = 0
-
+    
     
     var body: some View {
         ZStack {
             Color.bumbleWhite.ignoresSafeArea()
             
             VStack(spacing: 12) {
-                header
+                BumbleHeaderView()
                 BumbleFilterView(options: options, selection: $selection)
                 
                 ZStack {
@@ -93,23 +94,23 @@ struct BumbleHomeView: View {
             onSuperLikePressed: nil,
             user: user
         )
-            .withDragGesture(
-                .horizontal,
-                minimumDistance: 10,
-                resets: true,
-                animation: .default,
-                rotationMultiplier: 1.05,
-                onChanged: { dragOffset in
-                    currentSwipeOffset = dragOffset.width
-                },
-                onEnded: { dragOffset in
-                    if dragOffset.width < -50 {
-                        userDidSelect(index: index, isLike: false)
-                    } else if dragOffset.width > 50 {
-                        userDidSelect(index: index, isLike: true)
-                    }
+        .withDragGesture(
+            .horizontal,
+            minimumDistance: 10,
+            resets: true,
+            animation: .default,
+            rotationMultiplier: 1.05,
+            onChanged: { dragOffset in
+                currentSwipeOffset = dragOffset.width
+            },
+            onEnded: { dragOffset in
+                if dragOffset.width < -50 {
+                    userDidSelect(index: index, isLike: false)
+                } else if dragOffset.width > 50 {
+                    userDidSelect(index: index, isLike: true)
                 }
-            )
+            }
+        )
     }
     
     private var overlaySwipingIndicators: some View {
@@ -142,50 +143,8 @@ struct BumbleHomeView: View {
         }
         .animation(.smooth, value: currentSwipeOffset)
     }
-
-    private var header: some View {
-        HStack(spacing: 0) {
-            HStack(spacing: 0) {
-                Image(systemName: "line.horizontal.3")
-                    .padding(8)
-                    .background(.black.opacity(0.001))
-                    .onTapGesture {
-                        
-                    }
-                
-                Image(systemName: "arrow.uturn.left")
-                    .padding(8)
-                    .background(.black.opacity(0.001))
-                    .onTapGesture {
-                        
-                    }
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            
-            Text("bumble")
-                .font(.title)
-                .foregroundStyle(.bumbleYellow)
-                .fontWeight(.semibold)
-                .frame(maxWidth: .infinity, alignment: .center)
-            
-            Image(systemName: "slider.horizontal.3")
-                .padding(8)
-                .background(.black.opacity(0.001))
-                .onTapGesture {
-                    
-                }
-                .frame(maxWidth: .infinity, alignment: .trailing)
-        }
-        
-        .font(.title2)
-        .fontWeight(.medium)
-        .foregroundStyle(.bumbleBlack)
-    }
-    
 }
-
 
 #Preview {
     BumbleHomeView()
 }
-
